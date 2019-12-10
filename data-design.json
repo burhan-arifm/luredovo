@@ -1,0 +1,67 @@
+{
+    "customers" : [
+        {
+            "id" : "customer:08982278049",
+            "name" : "Shofi Aghnia F",
+            "phone" : "08982278049",
+            "email" : "afshofi@gmail.com",
+            "balance" : 0,
+            "premium" : false,
+            "created_at" : "2019-12-09 11:51:33",
+            "updated_at" : "2019-12-09 11:51:33",
+            "transaction_history" : []
+        },
+        {
+            "id" : "customer:081321059349",
+            "name" : "Burhan Arif M",
+            "phone" : "081321059349",
+            "email" : "burhan.arifm@gmail.com",
+            "balance" : 1000000,
+            "premium" : true,
+            "created_at" : "2019-12-09 11:49:26",
+            "updated_at" : "2019-12-09 11:50:33",
+            "transaction_history" : [
+                {
+                    "receiver" : "payment:pln",
+                    "amount" : 275300,
+                    "description" : "PLNPASCA1839081444",
+                    "created_at" : "2019-12-09 11:56:16"
+                },
+                {
+                    "sender" : "user:089608939784",
+                    "amount" : 21000,
+                    "description" : "Patungan Beli Ayam",
+                    "created_at" : "2019-12-09 11:58:40"
+                },
+                {
+                    "receiver" : "payment:grab",
+                    "amount" : 117000,
+                    "description" : "MCDwAzBYlDvP6UJYol7pCeo",
+                    "created_at" : "2019-12-09 12:03:23"
+                },
+                {
+                    "receiver" : "payment:merchant",
+                    "amount" : 117000,
+                    "description" : "GRABFOOD_Ayam Geprek Ganyang-Geprek MIe Goreng",
+                    "created_at" : "2019-12-09 12:33:19"
+                }
+            ]
+        }
+    ],
+    "transaction" : {
+        "id" : "transaction:1575943690",
+        "sender" : {
+            "id" : "user:089608939784",
+            "name" : "Shofi Aghnia F",
+            "phone" : "08982278049"
+        },
+        "receiver" : {
+            "id" : "user:081321059349",
+            "name" : "Burhan Arif M",
+            "phone" : "081321059349"
+        },
+        "amount" : 21000,
+        "description" : "Patungan Beli Ayam",
+        "created_at" : "2019-12-09 11:58:40"
+    }
+}
