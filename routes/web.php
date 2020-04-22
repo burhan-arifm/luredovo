@@ -15,23 +15,28 @@ use Illuminate\Support\Facades\Redis;
 
 $router->get('/', function () use ($router) {
     // return $router->app->version();
-    // return \Carbon\Carbon::now()->format('Y-m-d H:m:s.SSS').' '.\Carbon\Carbon::now()->timestamp;
-    return Redis::keys('user:*');
+    return \Carbon\Carbon::now()->format('Y-m-d H:m:s').' '.\Carbon\Carbon::now()->timestamp;
+    // return Redis::keys('user:*');
 });
 
-$router->group(['prefix' => 'customer'], function () use ($router)
+$router->group(['prefix' => 'customers'], function () use ($router)
 {
+    $router->get('/', 'Customer@all');
     $router->post('/', 'Customer@register');
     $router->group(['prefix' => '{customer_id}'], function () use ($router)
     {
         $router->get('/', 'Customer@detail');
         $router->put('/', 'Customer@update');
-        $router->get('transactions', 'Transaction@all');
+        $router->group(['prefix' => 'transactions'], function () use ($router)
+        {
+            $router->get('/', 'Transaction@all');
+            $router->post('/', 'Transaction@make');
+            $router->get('{transaction_id}', function ($transaction_id)
+            {
+                return redirect("transactions/$transaction_id");
+            });
+        });
     });
 });
 
-$router->group(['prefix' => 'transactions'], function () use ($router)
-{
-    $router->post('/', 'Transaction@make');
-    $router->get('{transaction_id}', 'Transaction@detail');
-});
+$router->get('transactions/{transaction_id}', 'Transaction@detail');
